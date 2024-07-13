@@ -6,6 +6,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -33,20 +34,25 @@ public class TokenService {
     }
 
     public String getSubject(String tokenJWT) {
+        DecodedJWT verifier = null;
         try {
-            var algorithm = Algorithm.HMAC256(apiSecret);
-            return JWT.require(algorithm)
+            Algorithm algorithm = Algorithm.HMAC256(apiSecret);
+            verifier = JWT.require(algorithm)
                     .withIssuer("API ForoHub")
                     .build()
-                    .verify(tokenJWT)
-                    .getSubject();
+                    .verify(tokenJWT);
+            verifier.getSubject();
         } catch (JWTVerificationException exception) {
             throw new RuntimeException("Invalid or expired JWT token!");
         }
+        if (verifier == null) {
+            throw new RuntimeException("Verifier invalido");
+        }
+        return verifier.getSubject();
     }
 
     private Instant generateExpirationDate() {
-        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-05:00"));
     }
 }
 
