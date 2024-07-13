@@ -1,4 +1,4 @@
-package com.alura.forohub.domain.infra.security;
+package com.alura.forohub.infra.security;
 
 
 import com.alura.forohub.domain.topic.user.UserRepository;

@@ -1,6 +1,6 @@
 package com.alura.forohub.domain.topic.validation;
 
-import com.alura.forohub.domain.infra.errors.IntegrityValidationException;
+import com.alura.forohub.infra.errors.IntegrityValidationException;
 import com.alura.forohub.domain.topic.RegisterTopicData;
 import org.springframework.stereotype.Component;
 

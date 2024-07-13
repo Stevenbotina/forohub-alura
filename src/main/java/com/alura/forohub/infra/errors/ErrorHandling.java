@@ -1,4 +1,4 @@
-package com.alura.forohub.domain.infra.errors;
+package com.alura.forohub.infra.errors;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ValidationException;

@@ -1,7 +1,7 @@
 package com.alura.forohub.domain.response;
 
 
-import com.alura.forohub.domain.infra.errors.IntegrityValidationException;
+import com.alura.forohub.infra.errors.IntegrityValidationException;
 import com.alura.forohub.domain.topic.Topic;
 import com.alura.forohub.domain.topic.TopicRepository;
 import com.alura.forohub.domain.topic.user.User;
